@@ -3,7 +3,9 @@ socketio小喇叭
 
 ## 安装
 cd web/socketio-xlb
+
 npm install socket.io
+
 node server
 
 ## 运行
