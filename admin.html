@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+	<h2>小喇叭后台管理</h2>
+	<input type="text" id="username" value="" placeholder="发私信在这里指定用户" />
+    <input type="text" id="content" value="官人，看过来^^" />
+    <input type="button" id="submit" value="发送" onclick="xlb()" />
+
+
+<script src="./socket.io.dev.js"></script>
+<script>
+	var socket = io('http://localhost:8888');
+	socket.on("connect_error", function(data){
+		document.write("小喇叭server连接失败");
+		socket.close();
+	});
+
+	function xlb(){
+		var username = document.getElementById('username').value;
+		var content = document.getElementById('content').value;
+		if(username!=''){
+			socket.emit('sendto', { username:username, content:content });
+		}else{
+			socket.emit('send', { content: content });
+		}
+	}
+  
+  
+    
+  
+</script>
+
+</body>
+</html>
